@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const app = express()
 const bodyParser = require("body-parser");
 const cardsArrayModel= require('./cardsArrays');
-mongoose.set('bufferCommands', false);
 // Middlewares
 app.use(express.urlencoded());
 
@@ -14,18 +13,21 @@ app.use(bodyParser.json())
 
 
 app.get('/cardsArrays',(req,res)=>{
-    let cardsArraysToBeSent=[];
-    cardsArrayModel.find({}).then((cardsArrays)=>{
-        console.log(cardsArrays);
-
-        cardsArrays.forEach((cardsArray)=>{
-            if(cardsArray.remaining){
-                cardsArraysToBeSent.push(cardsArray);
-            }
+    let cardsArraysTobeSent= [];
+    cardsArrayModel.find({remaining:false}).then((cardsArrays)=>{
+        // console.log(cardsArrays);
+        cardsArrays.forEach(cardsArray=>{
+            cardsArraysTobeSent.push(cardsArray.cardsArray);
         })
-        res.send(cardsArraysToBeSent);
+        res.send(cardsArraysTobeSent);
     }).catch(error=> console.log("error occurred",error));
-    // res.send("Something");
 });
+app.get('/remainingCards',(req,res)=>{
+    cardsArrayModel.find({remaining: true}).then((cardsArrays)=>{
+        // console.log(cardsArrays);
+        res.send(cardsArrays[0].cardsArray);
+    }).catch(error=> console.log("error occurred",error));
+});
+
 
 module.exports = app;

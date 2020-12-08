@@ -3,10 +3,7 @@ const port = 3000
 const app = require('./app');
 // mongoose.set('bufferCommands', false);
 
-mongoose.connection.once('open', () =>{
-    console.log('connection established')
-}).on('connectionError',(err) =>{
-    console.log(err);
-})
+mongoose.connect('mongodb://localhost/cards').then(() => console.log("Connected to MongoDB")).catch((err) => console.log("Exception Occured ", err));
+
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
