@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const cardsArrayModel = require('./models/cardsArrays')
+const cardsArrayModel = require('./cardsArrays')
 const cardsData = require('./cardsData')
 
 // Connect to DATABASE
