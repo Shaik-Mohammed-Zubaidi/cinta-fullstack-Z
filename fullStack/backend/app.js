@@ -13,18 +13,14 @@ app.use(bodyParser.json())
 
 
 app.get('/cardsArrays',(req,res)=>{
-    let cardsArraysTobeSent= [];
     cardsArrayModel.find({remaining:false}).then((cardsArrays)=>{
-        console.log(cardsArrays);
-        cardsArrays.forEach(cardsArray=>{
-            cardsArraysTobeSent.push(cardsArray.cardsArray);
-        })
-        res.send(cardsArraysTobeSent);
+        res.send(cardsArrays);
     }).catch(error=> console.log("error occurred",error));
 });
 app.get('/remainingCards',(req,res)=>{
+    // console.log("inside get remainingCards");
     cardsArrayModel.find({remaining: true}).then((cardsArrays)=>{
-        // console.log(cardsArrays);
+        // console.log(cardsArrays[0].cardsArray);
         res.send(cardsArrays[0].cardsArray);
     }).catch(error=> console.log("error occurred",error));
 });
