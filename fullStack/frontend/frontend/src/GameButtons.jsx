@@ -1,10 +1,11 @@
 import React from 'react';
+import './App.css';
 
 const GameButtons = (props)=>{
     const {saveProgress,restart}= props;
     return <div>
-        <button onClick={saveProgress}>Save</button>
-      <button onClick={restart}>Restart</button>
+        <button onClick={saveProgress} className="button">Save</button>
+      <button onClick={restart} className="button">Restart</button>
     </div>
 }
 

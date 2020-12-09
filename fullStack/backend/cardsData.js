@@ -1,9 +1,9 @@
 const cardsData=
     [{name: "remaining",
-        cardsArray: ["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","cj","cq","ck",
-            "d1","d2","d3","d4","d5","d6","d7","d8","d9","d10","dj","dq","dk",
-            "s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","sj","sq","sk",
-            "h1","h2","h3","h4","h5","h6","h7","h8","h9","h10","hj","hq","hk"],remaining: true},
+        cardsArray: ["club1","club2","club3","club4","club5","club6","club7","club8","club9","club10","clubjack","clubqueen","clubking",
+            "diamond1","diamond2","diamond3","diamond4","diamond5","diamond6","diamond7","diamond8","diamond9","diamond10","diamondjack","diamondqueen","diamondking",
+            "spade1","spade2","spade3","spade4","spade5","spade6","spade7","spade8","spade9","spade10","spadejack","spadequeen","spadeking",
+            "heart1","heart2","heart3","heart4","heart5","heart6","heart7","heart8","heart9","heart10","heartjack","heartqueen","heartking"],remaining: true},
     {name: "heart",cardsArray: [],remaining: false},
     {name: "spade",cardsArray: [],remaining: false},
     {name: "diamond",cardsArray: [],remaining: false},

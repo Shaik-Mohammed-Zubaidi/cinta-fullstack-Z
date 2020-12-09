@@ -5,9 +5,7 @@ const DropTarget= (props) =>{
 
     function drop(event){
         event.preventDefault();
-
         const cardDropped= event.dataTransfer.getData("text");
-        // console.log(cardDropped);
         if(props.cardData[0]!==cardDropped[0]){
             return;
         }
