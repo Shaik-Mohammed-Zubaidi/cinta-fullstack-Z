@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 app.get('/cardsArrays',(req,res)=>{
     let cardsArraysTobeSent= [];
     cardsArrayModel.find({remaining:false}).then((cardsArrays)=>{
-        // console.log(cardsArrays);
+        console.log(cardsArrays);
         cardsArrays.forEach(cardsArray=>{
             cardsArraysTobeSent.push(cardsArray.cardsArray);
         })
