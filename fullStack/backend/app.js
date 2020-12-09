@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express()
 const bodyParser = require("body-parser");
 const cardsArrayModel= require('./cardsArrays');
+const cardsData= require('./cardsData');
 // Middlewares
 app.use(express.urlencoded());
 
@@ -25,5 +26,24 @@ app.get('/remainingCards',(req,res)=>{
     }).catch(error=> console.log("error occurred",error));
 });
 
+app.put('/remainingCards',(req,res)=>{
+    const remainingCardsArray= req.body;
+    cardsArrayModel.findOneAndUpdate({remaining: true},{cardsArray: remainingCardsArray}).then(result=>{
+        // console.log(result);
+        res.send("done");
+    }).catch(error=> console.log(error));
+    
+})
+
+app.get('/restart',(req,res)=>{
+    async function updatesDone(){
+        await cardsArrayModel.updateMany({remaining: false},{cardsArray: []});
+        await cardsArrayModel.findOne({remaining: true},{cardsArray: cardsData[0].cardsArray},{new: true});
+    }
+    updatesDone().then(result=>{
+        // console.log(result);
+        res.send(cardsData);
+    }).catch(error=> console.log(error));
+})
 
 module.exports = app;
